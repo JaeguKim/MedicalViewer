@@ -1,0 +1,89 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Insert title here</title>
+</head>
+<body>
+<style>
+	.wrapper {
+	z-index:1;
+	position:relative;
+	width:1000px;
+	height:700px;
+	border:1px solid;
+	border-radius:5px;
+	}
+	.wrapper:after{
+	width:1000px;
+	height:700px;
+	z-index:-1;
+	position:absolute;
+	top:0;
+	left:0;
+	content:"";
+	background-image: url('/img/background/blood_check.png') ;
+	background-repeat:no-repeat;
+	background-position:center;
+	background-origin:content-box;
+	background-size: cover;
+	}
+	.title{color:#000000;font-weight:bold;font-size:20px;}
+	</style>
+	
+	<script type="text/javascript" src="/js/jquery-3.2.1.min.js"></script>
+	<script type="text/javascript">
+		
+	function showSugar() {
+		if (sugar == 0)
+			document.getElementById("sugar_pic").src="/status/s_neg.png";
+		else
+			document.getElementById("sugar_pic").src="/status/caution.png";
+	}
+	
+	function showAlbumin() {
+		if (sugar == 0)
+			document.getElementById("albumin_pic").src="/status/s_neg.png";
+		else
+			document.getElementById("albumin_pic").src="/status/caution.png";
+	}
+	
+	function showBlood() {
+		document.getElementById("blood_pic").src="/status/s_neg.png";	
+	}
+	
+	function showPH() {
+		$('#ph').load("/figures/ph_check.html");
+	}
+	
+	$(document).ready(function() {
+			showSugar();
+			showAlbumin();
+			showBlood();
+			showPH();
+		});
+	</script>
+	
+	<div id = "sugar" style="float:left;width:50%;height:50%; text-align: center;border:1px solid;">
+	<font face="verdana" size="30" color="black">요당(Ur.Sugar)</font>
+	<img id="sugar_pic" border="1" width="100%" height="100%" style = "border:1px solid;">
+	</div>
+	 
+	<div id = "albumin" style="clear:right;float:right;width:50%;height:50%; text-align: center;border:1px solid;">
+	<font face="verdana" size="30" color="black">요단백(Ur.Albumin)</font>
+	<img id="albumin_pic" border="1" width="100%" height="100%"style = "border:1px solid;" >
+	</div>
+	 
+	<div id = "blood" style="float:left;width:50%;height:50%; text-align: center;border:1px solid;">
+	<font face="verdana" size="35" color="black">요잠혈(Occult Blood)</font>
+	<img id="blood_pic" border="1" width="100%" height="100%" style = "border:1px solid;">
+	</div>
+	
+	<div id = "ph_wrap" style="clear:right;float:right;width:50%;height:50%; text-align: center;border:1px solid;">
+		<font face="verdana" size="30" color="black">PH</font>
+		<div id = "ph" border="1" width = "100%" height="100%" style = "border:1px solid;">
+		</div>
+	</div>
+	 
+	</body>
+	</html>

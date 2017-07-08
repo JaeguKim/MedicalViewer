@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Medical Viewer</title>
+<head>
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+<link href="/css/style.css" rel="stylesheet" type="text/css"  />
+<link href="/css/animate.css" rel="stylesheet">
+<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/js/arrow27.js"></script>
+<script type="text/javascript" src="/js/common.js"></script>
+</head>
+
+<body>
+<!-----------------Header Start--------------------->
+<header class="site-header">
+<div class="header_top wow fadeInDown animated" data-wow-duration="0.6s" data-wow-delay="0.6">
+<div class="more_size">
+<div class="header_right">
+<span class="call">사용자 로그인이 필요합니다. </span>
+<a class="more" href="/memberLogin">로그인</a>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="header_bottom wow fadeInDown animated" data-wow-duration="0.8s" data-wow-delay="0.8">
+<div class="more_size">
+<div class="logo">
+<!--------------Logo Image------------------->
+<a><img alt="Logo"  src="/images/logo-new2.png" style="height: 70px; weight: 70px;"/></a>
+</div>
+
+<!----------Navigation Start----------------->
+
+<nav class="navbar navbar-inverse">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+         <ul class="nav navbar-nav" >
+           <li><a class="active" href="/" style="margin-right: 50px; line-height:2;">초기화면</a></li>
+            <li><a href ='javascript:;' onclick = general() style="margin-right: 50px; line-height:2;">일반 건강검진</a></li>
+            <li><a href ='javascript:;' onclick = precise() style="margin-right: 50px; line-height:2;">정밀 건강검진</a></li>
+            <li><a href ='javascript:;' onclick = detail() style="margin-right: 50px; line-height:2;">상세수치 확인</a></li>
+            <li><a href ='javascript:;' onclick = solution()>생활 처방</a></li>
+               </ul>
+    </div>
+</nav>
+
+<!----------Navigation End------------------>
+
+</div>
+<div class="clear"></div>
+</div>
+
+</header>
+<!------------Header End----------------->
+
+
+<!------------Banner image--------------->
+<div class="banner wow fadeInDown animated" data-wow-duration="0.9s" data-wow-delay="0.9">
+<img src="/images/banner-new2.png" alt="banner" style="height: 100%; width: 100%;" />
+</div>
+
+<div class="more_size">
+
+<!------------Section-1 Start--------------->
+<section class="section-1 wow fadeInDown animated" data-wow-duration="1s" data-wow-delay="1">
+
+<h1>안녕하세요!<br />
+<span>Medical Viewer 서비스 입니다.</span></h1>
+
+<p>저희 서비스는 병원에서 시행한 건강검진 결과를 종이에 인쇄된 글자가 아닌,</p>
+<p>홈페이지에 접속하여 이미지를 통해 건강상태를 한눈에 알기 쉽게 정보를 제공해주는 서비스입니다.</p>
+
+<div class="clear"></div>
+</section>
+<!------------Section-1 End--------------->
+
+<!------------Section-2 Start--------------->
+<section class="section-2 wow zoomIn animated" data-wow-duration="2s" data-wow-delay="0.4s">
+<ul>
+  <li>
+  <div class="img-box">
+  <img src="/images/banner2-1.png" alt="기능1"  />
+  </div>
+  <div class="box">
+  <h2>일반 건강검진</h2>
+  <p>기본적인 건강검진 결과를 바탕으로</p>
+  <p>신체 전반적인 건강 정보를 </p>
+  <p>각 신체 종류별로 구분하여 제공해줍니다.</p>
+  <a class="more1" href ='javascript:;' onclick = general() style="margin-bottom: 35px;">자세히 보기</a>
+  </div>
+  </li>
+  <li>
+  <div class="img-box">
+  <img src="/images/banner2-2.png" alt="기능2" />
+  </div>
+  <div class="box">
+  <h2>정밀 건강검진</h2>
+  <p>보다 정밀한 건강검진을 시행하여</p>
+  <p>일반 건강검진보다 자세한 정보를 </p>
+  <p>각 신체 종류별로 구분하여 제공해줍니다.</p>
+  <a class="more1" href ='javascript:;' onclick = precise() style="margin-bottom: 35px;">자세히 보기</a>
+  </div>
+  </li>
+</ul>
+<ul>
+  <li>
+  <div class="img-box">
+  <img src="/images/banner2-3.png" alt="기능3"  />
+  </div>
+  <div class="box">
+  <h2>상세 수치 확인</h2>
+  <p>건강검진을 통해 측정한 각 수치 데이터를 </p>
+  <p>정상 범위와 비교하면서 이해하기 쉽게</p>
+  <p>그래프와 이미지로 제공해줍니다.</p>
+  <a class="more1" onclick = detail() href ='javascript:;' >자세히 보기</a>
+  </div>
+
+  </li>
+
+  <li>
+  <div class="img-box">
+  <img src="/images/banner2-4.png" alt="기능4" />
+  </div>
+  <div class="box">
+  <h2>생활 처방</h2>
+  <p>당신이 겪고 있는 질병의 회복에 도움이 되고 </p>
+  <p>일상생활에서 실천할 수 있는 </p>
+  <p>운동과 식생활 처방을 제공해줍니다.</p>
+  <a class="more1" onclick = solution() href ='javascript:;' >자세히 보기</a>
+  </div>
+  </li>
+<div class="clear"></div>
+</ul>
+</section>
+</div>
+<!------------Section-2 End--------------->
+
+<!------------Footer Start-------------->
+
+<footer class="footer wow zoomIn animated" data-wow-duration="2s" data-wow-delay="0.9s">
+  <div class="more_size">
+  <div class="one_third">
+  <h2><span style="font-weight: bold">서비스 바로가기</span></h2>
+  <a href="/">초기화면</a><br />
+  <a href ='javascript:;' onclick = general()>일반 건강검진</a><br />
+  <a href ='javascript:;' onclick = precise()>정밀 건강검진</a><br />
+  <a href ='javascript:;' onclick = detail()>상세수치 확인</a><br />
+  <a href ='javascript:;' onclick = solution()>생활 처방</a>
+  </div>
+
+  <div class="one_third">
+  <h2><span style="font-weight: bold">관련 사이트</span></h2>
+  <a href="http://health.mw.go.kr" target="_blank">국가건강정보포털</a><br />
+  <a href="http://nhic.or.kr" target="_blank">국민건강보험공단</a><br />
+  <a href="http://health.cdc.go.kr" target="_blank">질병관리본부</a><br />
+  <a href="http://hi.nhic.or.kr" target="_blank">건강in</a><br />
+  <a href="http://hirawebzine.or.kr/" target="_blank">건강나래</a>
+  </div>
+
+  <div class="one_third_last">
+  <h2><span style="font-weight: bold">개발자 정보</span></h2>
+	<a>김동열 (dy5361@gmail.com)<br></a>
+	<a>김유민 (show3993@naver.com)<br></a>
+	<a>김재구 (rlaworn1993@gmail.com)<br></a>
+	<a>선용현 (ovomaruta@naver.com)<br></a>
+	<a>양희수 (gmltmwkd@naver.com)</a>
+  </div>
+  <div class="clear"></div>
+  </div>
+
+  <div class="footer_bottom">
+  2017. Team Medical Viewer All rights reserved.
+  <div class="clear"></div>
+  </div>
+  <div class="clear"></div>
+<!------------Footer End-------------->
+</div>
+</body>
+</html>

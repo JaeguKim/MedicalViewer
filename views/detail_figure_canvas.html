@@ -1,0 +1,158 @@
+<html>
+   <head>
+      <meta charset="utf-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
+      <link rel="stylesheet" href="/css/detail_figure.css" />
+   <script type="text/javascript" src="/js/jquery-3.2.1.min.js"></script>
+   <script type="text/javascript">
+   //button press check
+   var button_pressed = [false,false,false,false,false,false,false,false];
+   var button_name = ['thyroid_button','heart_button','stomach_button','intestine_button','kidney_button','lung_button','blood_check_button','urine_check_button'];
+   
+   function showThyroid() {
+      for (var i = 0; i < 8; i++){
+         if (button_pressed[i] == true)
+         {
+            var property = document.getElementById(button_name[i]);
+            property.style.backgroundColor = "#c94663";
+         }
+      }
+      var property = document.getElementById(button_name[0]);
+      property.style.backgroundColor = "#0080ff";
+      button_pressed[0] = true;
+      $('#graph').load("/figures/thyroid.html");
+   }
+   
+   function showHeart() {
+      for (var i = 0; i < 8; i++){
+         if (button_pressed[i] == true)
+         {
+            var property = document.getElementById(button_name[i]);
+            property.style.backgroundColor = "#c94663";
+         }
+      }
+      var property = document.getElementById(button_name[1]);
+      property.style.backgroundColor = "#0080ff";
+      button_pressed[1] = true;
+      $('#graph').load("/figures/blood_pressure.html");
+   }
+   
+   function showStomach() {
+      for (var i = 0; i < 8; i++){
+         if (button_pressed[i] == true)
+         {
+            var property = document.getElementById(button_name[i]);
+            property.style.backgroundColor = "#c94663";
+         }
+      }
+      var property = document.getElementById(button_name[2]);
+      property.style.backgroundColor = "#0080ff";
+      button_pressed[2] = true;
+      $('#graph').load("/figures/wbc_check.html");
+   }
+   
+   function showIntestine() {
+      for (var i = 0; i < 8; i++){
+         if (button_pressed[i] == true)
+         {
+            var property = document.getElementById(button_name[i]);
+            property.style.backgroundColor = "#c94663";
+         }
+      }
+      var property = document.getElementById(button_name[3]);
+      property.style.backgroundColor = "#0080ff";
+      button_pressed[3] = true;
+      $('#graph').load("/figures/intestine.html");
+   }
+   
+   function showKidney() {
+      for (var i = 0; i < 8; i++){
+         if (button_pressed[i] == true)
+         {
+            var property = document.getElementById(button_name[i]);
+            property.style.backgroundColor = "#c94663";
+         }
+      }
+      var property = document.getElementById(button_name[4]);
+      property.style.backgroundColor = "#0080ff";
+      button_pressed[4] = true;
+      $('#graph').load("/figures/kidney.html");
+   }
+   
+   function showLung() {
+      for (var i = 0; i < 8; i++){
+         if (button_pressed[i] == true)
+         {
+            var property = document.getElementById(button_name[i]);
+            property.style.backgroundColor = "#c94663";
+         }
+      }
+      var property = document.getElementById(button_name[5]);
+      property.style.backgroundColor = "#0080ff";
+      button_pressed[5] = true;
+      $('#graph').load("/figures/wbc_check.html");
+   }
+   
+   function showBladder() {
+      $('#graph').load("/figures/bladder.html");
+   }
+   
+   function showBloodCheck() {
+      for (var i = 0; i < 8; i++){
+         if (button_pressed[i] == true)
+         {
+            var property = document.getElementById(button_name[i]);
+            property.style.backgroundColor = "#c94663";
+         }
+      }
+      var property = document.getElementById(button_name[6]);
+      property.style.backgroundColor = "#0080ff";
+      button_pressed[6] = true;
+      $('#graph').load("/blood_check.html");
+   }
+   
+   function showUrineCheck() {
+      for (var i = 0; i < 8; i++){
+         if (button_pressed[i] == true)
+         {
+            var property = document.getElementById(button_name[i]);
+            property.style.backgroundColor = "#c94663";
+         }
+      }
+      var property = document.getElementById(button_name[7]);
+      property.style.backgroundColor = "#0080ff";
+      button_pressed[7] = true;
+      $('#graph').load("/urine_check.html");
+   }
+   
+   
+      $(document).ready(function() {
+         showThyroid();
+      });
+   </script>
+   </head>
+   <body>
+      <!-- Content -->
+         <div id="content">   
+            <div class="inner">
+               <!-- Post -->
+               <article class="box post post-excerpt">
+                  <button type="button" id="thyroid_button" onclick="showThyroid()" style="margin-bottom: 20px">갑상선</button>
+                  <button type="button" id="heart_button" onclick="showHeart()" style="margin-bottom: 20px">심장</button>
+                  <button type="button" id="stomach_button" onclick="showStomach()" style="margin-bottom: 20px">위</button>
+                  <button type="button" id="intestine_button" onclick="showIntestine()" style="margin-bottom: 20px">소장 및 대장</button>
+                  <button type="button" id="kidney_button" onclick="showKidney()" style="margin-bottom: 20px">신장</button>
+                  <button type="button" id="lung_button" onclick="showLung()" style="margin-bottom: 20px">폐</button>
+                  <button type="button" id="blood_check_button" onclick="showBloodCheck()" style="margin-bottom: 20px">혈액검사</button>
+                  <button type="button" id="urine_check_button" onclick="showUrineCheck()" style="margin-bottom: 20px">오줌검사</button>               
+                  
+                  <div id = "wrapper" style = "border: 1px solid black;">
+                     <div id = "graph" width = '830px' height='800px' align='center'></div>
+                  </div>
+                  
+               </article>
+            </div>
+         </div>
+
+   </body>
+</html>

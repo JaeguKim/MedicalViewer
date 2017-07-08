@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<style>
+html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
+</style>
+	<meta content="initial-scale=1.0, maximum-scale=2.0, user-scalable=no" name="viewport"/>
+    <meta name="msapplication-tap-highlight" content="no" />
+    <title id='Description'>JavaScript Chart Bar Series Example</title>
+    <meta name="description" content="This is an example of JavaScript Chart Bars and Columns Series" />
+    <link rel="stylesheet" href="/utils/jqwidgets-ver4.5.1//jqwidgets/styles/jqx.base.css" type="text/css" />
+    <script type="text/javascript" src="/utils/jqwidgets-ver4.5.1//scripts/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="/utils/jqwidgets-ver4.5.1//jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="/utils/jqwidgets-ver4.5.1//jqwidgets/jqxdraw.js"></script>
+    <script type="text/javascript" src="/utils/jqwidgets-ver4.5.1//jqwidgets/jqxchart.core.js"></script>
+    <script type="text/javascript" src="/utils/jqwidgets-ver4.5.1//jqwidgets/jqxdata.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            // prepare chart data
+            var sampleData = [
+                { name: 'normal', normal_glucose: 109 , patient_glucose: glucose }];
+                
+            var color_var;
+            if (glucose <= 109)
+            {
+            	$("#emoticon").attr("src", "/status/healthy.png");
+            	color_var = "#0D1CF0";
+            }
+            	
+            else
+            {
+            	$("#emoticon").attr("src", "/status/caution.png");
+            	color_var = "#FF0000";
+            }
+            
+            var settings = {
+                title: "공복시 혈당수치",
+                description: "정상수치와 비교한 그래프입니다.",
+                showLegend: true,
+                enableAnimations: true,
+                padding: { left: 20, top: 5, right: 20, bottom: 5 },
+                titlePadding: { left: 90, top: 0, right: 0, bottom: 10 },
+                source: sampleData,
+               
+                
+                valueAxis:
+                {
+                	unitInterval:30,
+                    minValue: 0,
+                    maxValue: 200,
+                    title: { text: '공복시 최고 혈당수치(g/dL)' },
+                    labels: { verticalAlignment: 'left' },
+                    tickMarks: { color: '#BCBCBC' }
+                    
+                },
+                colorScheme: 'scheme01',
+                seriesGroups:
+                    [
+                        {
+                            type: 'column',
+                            orientation: 'vertical',
+                            columnsGapPercent: 100,
+                         
+                            toolTipFormatSettings: { thousandsSeparator: ',' },
+                            series: [
+                                    { dataField: 'normal_glucose', displayText: '정상인',color: "#37F00D" },
+                                    { dataField: 'patient_glucose', displayText: '사용자',color: color_var }                                   
+                                ]
+                        }
+                    ]
+            };
+            // setup the chart
+            $('#chartContainer3').jqxChart(settings);
+        });
+    </script>
+</head>
+<body class='default'>
+    <table>
+  <tr>
+    <td><div id= 'ache'>
+     <img id = "emoticon" style = "max-width: 100%; height: auto;">
+    </div>
+    </td>
+  </tr>
+  <tr>
+    <td><div id='chartContainer3' style="width:100%; height:500px;"></div>
+    
+    </td>
+  </tr>
+</table>
+</body>
+</html>

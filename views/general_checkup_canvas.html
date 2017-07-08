@@ -1,0 +1,72 @@
+<!DOCTYPE HTML>
+<html>
+<title></title>
+<head>
+	<meta charset="utf-8" />
+	<link rel="stylesheet" href="/css/general_checkup.css" type="text/css">
+	<script type="text/javascript" src="/js/jquery-3.2.1.min.js"></script>
+	<script type="text/javascript" src="/js/general_checkup_js/organTab.js"></script>
+	<script type="text/javascript" src="/js/general_checkup_js/xrayTab.js"></script>
+	<script type="text/javascript" src="/js/general_checkup_js/MuscleTab.js"></script>
+</head>
+<script>
+		function overlayClick() {
+			$('#overlay').fadeOut('slow');
+			$("#popup").fadeOut("slow");
+		}
+		
+		function showBloodCheckCanvas() {
+			document.getElementById("urine_or_blood_check").style.visibility = "visible";
+			$('canvas').hide();
+			$('#urine_or_blood_check').load("/blood_check.html");
+		}
+		
+		function showUrineCheckCanvas() {
+			document.getElementById("urine_or_blood_check").style.visibility = "visible";
+			$('canvas').hide();
+			$('#urine_or_blood_check').load("/urine_check.html");
+		}
+		$(document).ready(function() {
+			organ_canvas_init();
+			bone_canvas_init();
+			muscle_canvas_init();
+			$("#overlay").click(overlayClick);
+			showOrganCanvas();
+		});
+		
+</script>
+	<body>
+	<div id = "popup"><h1><img id="popup_img"></h1></div>
+		<!-- Content -->
+				<div id="overlay"></div>
+
+					<div id="popupBox"> 
+						 <div id="popupContent">질병상세수치<br/><br/><br/>		
+		    				<br />
+		    				<div id="graph"></div>
+		    				
+		    				<button class="deleteMeetingCancel">취소</button>
+						</div>
+		        		<div id="deleteMeetingConfirmDeleted">Meeting Deleted</div>
+            		</div>
+            		
+				<div class="inner">
+					<!-- Post -->
+					<article class="box post post-excerpt">
+						<button type="button" id="organ_button" onclick='showOrganCanvas()' style="margin-bottom: 20px">장기상태</button>
+						<button type="button" id="bone_button" onclick="showBoneCanvas()" style="margin-bottom: 20px">X_RAY 사진</button>
+						<button type="button" id="muscle_button" onclick="showMuscleCanvas()" style="margin-bottom: 20px">근육질환</button>
+						<button type="button" id="blood_check_button" onclick="showBloodCheckCanvas()" style="margin-bottom: 20px">혈액검사</button>
+						<button type="button" id="urine_check_button" onclick="showUrineCheckCanvas()" style="margin-bottom: 20px">요검사</button>
+						
+						<canvas id = "organ_canvas" width = '830px' height='800px' align='center'></canvas>
+						<canvas id = "bone_canvas" width = '830px' height='800px' align='center'></canvas>
+						<canvas id = "muscle_canvas" width = '830px' height='800px' align='center'></canvas>
+						<div id = "wrapper" width = '830px' height='800px' align='center' style = "border: 1px solid black;">
+							<div id = "urine_or_blood_check"></div>
+						</div>
+					</article>
+				</div>
+
+	</body>
+</html>

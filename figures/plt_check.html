@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="HandheldFriendly" content="True">
+	<meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1">
+    <link rel="stylesheet" href="/utils/jqwidgets-ver4.5.1//jqwidgets/styles/jqx.base.css" type="text/css" />
+    <script type="text/javascript" src="/utils/jqwidgets-ver4.5.1//scripts/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="/utils/jqwidgets-ver4.5.1//jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="/utils/jqwidgets-ver4.5.1//jqwidgets/jqxdraw.js"></script>
+    <script type="text/javascript" src="/utils/jqwidgets-ver4.5.1//jqwidgets/jqxchart.core.js"></script>
+    <script type="text/javascript" src="/utils/jqwidgets-ver4.5.1//jqwidgets/jqxdata.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            // prepare chart data
+            var sampleData = [
+                {normal_plt: 200 , patient_plt: 219 }];
+            // prepare jqxChart settings
+            var settings = {
+                title: "혈소판 수치",
+                description: "정상범위의 혈소판 수치와 비교한 그래프입니다.",
+                showLegend: true,
+                enableAnimations: true,
+                padding: { left: 20, top: 5, right: 20, bottom: 5 },
+                titlePadding: { left: 90, top: 0, right: 0, bottom: 10 },
+                source: sampleData,
+               
+                
+                valueAxis:
+                {
+                	unitInterval:50,
+                    minValue: 0,
+                    maxValue: 500,
+                    title: { text: '혈소판수치(/uL)' },
+                    labels: { verticalAlignment: 'left' },
+                    tickMarks: { color: '#BCBCBC' }
+                    
+                },
+                colorScheme: 'scheme01',
+                seriesGroups:
+                    [
+                        {
+                            type: 'column',
+                            orientation: 'vertical',
+                            columnsGapPercent: 50,
+                            toolTipFormatSettings: { thousandsSeparator: ',' },
+                            series: [
+                                    { dataField: 'normal_plt', displayText: '정상인',color: "#37F00D" },
+                                    { dataField: 'patient_plt', displayText: '사용자',color: "#0D1CF0" }                                   
+                                ]
+                        }
+                    ]
+            };
+            // setup the chart
+            $('#chartContainer9').jqxChart(settings);
+        });
+    </script>
+</head>
+<body class='default'>
+  <table>
+  <tr>
+  </tr>
+  <tr>
+    <td><div id= 'healthy'>
+     <img src="/status/healthy.png" style = "max-width: 100%; height: auto;">
+    </div>
+    </td>
+  </tr>
+  <tr>
+    <td><div id='chartContainer9' style="width:100%; height:500px;"></div>
+    </td>
+  </tr>
+</table>
+    
+</body>
+</html>

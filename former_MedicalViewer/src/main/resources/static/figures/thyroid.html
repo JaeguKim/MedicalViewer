@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="HandheldFriendly" content="True">
+	<meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1">
+    <link rel="stylesheet" href="/utils/jqwidgets-ver4.5.1//jqwidgets/styles/jqx.base.css" type="text/css" />
+    <script type="text/javascript" src="/utils/jqwidgets-ver4.5.1//scripts/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="/utils/jqwidgets-ver4.5.1//jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="/utils/jqwidgets-ver4.5.1//jqwidgets/jqxdraw.js"></script>
+    <script type="text/javascript" src="/utils/jqwidgets-ver4.5.1//jqwidgets/jqxchart.core.js"></script>
+    <script type="text/javascript" src="/utils/jqwidgets-ver4.5.1//jqwidgets/jqxdata.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            // prepare chart data
+            tsh = 2;
+            var sampleData = [
+                {normal_tsh: 1.81 , patient_tsh: tsh}];
+            var color_var;
+            if (tsh <= 1.81)
+            {
+            	$("#emoticon").attr("src", "/status/healthy.png");
+            	
+            	color_var = "#0D1CF0";
+            }
+            	
+            else
+            {
+            	$("#emoticon").attr("src", "/status/caution.png");
+            	color_var = "#FF0000";
+            }
+            // prepare jqxChart settings
+            var settings = {
+                title: "갑상선 호르몬(TSH) 수치",
+                description: "정상범위의 TSH수치와 비교한 그래프입니다.",
+                showLegend: true,
+                enableAnimations: true,
+                padding: { left: 20, top: 5, right: 20, bottom: 5 },
+                titlePadding: { left: 90, top: 0, right: 0, bottom: 10 },
+                source: sampleData,
+               
+                
+                valueAxis:
+                {
+                	unitInterval:0.4,
+                    minValue: 0,
+                    maxValue: 2,
+                    title: { text: 'TSH(uiu/mL)' },
+                    labels: { verticalAlignment: 'left' },
+                    tickMarks: { color: '#BCBCBC' }
+                    
+                },
+                colorScheme: 'scheme01',
+                seriesGroups:
+                    [
+                        {
+                            type: 'column',
+                            orientation: 'vertical',
+                            columnsGapPercent: 50,
+                            toolTipFormatSettings: { thousandsSeparator: ',' },
+                            series: [
+                                    { dataField: 'normal_tsh', displayText: '정상인',color: "#37F00D" },
+                                    { dataField: 'patient_tsh', displayText: '사용자',color: color_var }                                   
+                                ]
+                        }
+                    ]
+            };
+            // setup the chart
+            $('#chartContainer12').jqxChart(settings);
+        });
+    </script>
+</head>
+<body class='default'>
+  <table>
+  <tr>
+  </tr>
+  <tr>
+    <td><div id= 'healthy'>
+     <img id = "emoticon" style = "max-width: 100%; height: auto;">
+    </div>
+    </td>
+  </tr>
+  <tr>
+    <td><div id='chartContainer12' style="width:100%; height:500px;"></div>
+    </td>
+  </tr>
+</table>
+    
+</body>
+</html>

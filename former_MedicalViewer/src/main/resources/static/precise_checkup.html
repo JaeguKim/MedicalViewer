@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Medical Viewer</title>
+<head>
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,300,700,800' rel='stylesheet' type='text/css'>
+
+
+
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<link rel="stylesheet" href="http://fonts.googleapis.com/earlyaccess/notosanskr.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<link href='http://fonts.googleapis.com/css?family=Open+Sans&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+<link href="/css/style.css" rel="stylesheet" type="text/css"  />
+<link rel="stylesheet" href="/css/animate.css">
+<link href="/css/tab2.css" rel="stylesheet" type="text/css"  />
+<link href="/css/tab3.css" rel="stylesheet" type="text/css"  />
+
+
+<script type="text/javascript" src="/js/arrow27.js"></script>
+<script type="text/javascript" src="/js/common.js"></script>
+
+</head>
+
+<body>
+
+
+<!-----------------Header Start--------------------->
+<header class="site-header">
+<div class="header_top wow fadeInDown animated" data-wow-duration="0.6s" data-wow-delay="0.6">
+<div class="more_size">
+
+
+<div class="header_right">
+<!-- <a href="index.html"><img alt="초기화면"  src="images/home.png" style="height: 70px; weight: 70px;" align="left"/></a> -->
+
+<span class="call"></span>
+
+
+<a class="more" href="/logout">로그아웃</a>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+
+<div class="header_bottom wow fadeInDown animated" data-wow-duration="0.8s" data-wow-delay="0.8">
+<div class="more_size">
+
+
+<!----------Navigation Start----------------->
+
+<div style="height = 700px;">
+   <div class="logo">
+<!--------------Logo Image------------------->
+      <a><img alt="Logo"  src="/images/logo-new2.png" style="height: 70px; weight: 70px; margin-bottom: 15px" /></a>
+   </div>
+   <nav class="navbar navbar-inverse">
+       <div class="navbar-header" style="height: 100px">
+         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+           <span class="icon-bar"></span>
+           <span class="icon-bar"></span>
+           <span class="icon-bar"></span>
+         </button>
+   
+       </div>
+       <div class="collapse navbar-collapse" id="myNavbar">
+             <ul class="nav navbar-nav" >
+           <li><a  href="/" style="margin-right: 50px; line-height:2;">초기화면</a></li>
+            <li><a href ='javascript:;' onclick = general() style="margin-right: 50px; line-height:2;">일반 건강검진</a></li>
+            <li><a class="active" href ='javascript:;' onclick = precise() style="margin-right: 50px; line-height:2;">정밀 건강검진</a></li>
+            <li><a href ='javascript:;' onclick = detail() style="margin-right: 50px; line-height:2;">상세수치 확인</a></li>
+            <li><a href ='javascript:;' onclick = solution()>생활 처방</a></li>
+               </ul>
+       </div>
+   </nav> 
+   
+</div>
+
+<div id = "main_wrap">
+<!-- Overlay for fixed sidebar -->
+<div class="sidebar-overlay"></div>
+<div id = "precise_checkup"></div>
+
+
+<div id="sidebar" class="sidebar sidebar-default open" role="navigation" style="min-height: 860px; max-height: 860px">
+<!-- Material sidebar -->
+    <!-- Sidebar header -->
+    <div class="sidebar-header header-cover" style="background-image: url('/images/user_bg.jpg'); width:100%; height:100%">
+        <!-- Sidebar brand image -->
+        <div class="sidebar-image" align="center">
+            <img id = "user_pic" style="width: 150px; height: 150px; margin-top: 16px; border-radius: 50%;">
+        </div>
+      <div class="top-bar" style="text-align: center">
+         <div class="col-md-6">
+         <button class="btn btn-info btn-md" style="margin-top: 10px; margin-left: 56px; font-size: 17px; font-weight: bold">
+         <div class="round hollow blue" style="margin-right: 10px">
+                <span class="glyphicon glyphicon-user"></span>
+            </div><span id="username"></span></button>
+           </div>
+      </div>
+    </div>
+
+    <!-- Sidebar navigation -->
+   <ul class="nav sidebar-nav">
+       <li>
+            <a style="border-bottom-color: #f5c489; margin-left: 25px">
+                <i class="sidebar-icon md-star"></i><span id="birth"></span>
+            </a>
+        </li>
+        <li>
+            <a style="border-bottom-color: #f5c489; margin-left: 25px">
+                <i class="sidebar-icon md-drafts"></i><span id="hospital"></span>
+            </a>
+        </li>
+        <li>
+            <a style="border-bottom-color: #f5c489; margin-left: 25px">
+                <i class="sidebar-icon md-inbox"></i><span id="address"></span>
+            </a>
+        </li>
+        <li>
+            <a style="border-bottom-color: #f5c489; margin-left: 25px">
+                <i class="sidebar-icon md-send"></i><span id="checkdate"></span>
+            </a>
+        </li>
+    </ul>
+    
+</div>
+
+</div>
+
+
+<!----------Navigation End------------------>
+
+</div>
+<div class="clear"></div>
+</div>
+
+</header>
+<!------------Header End----------------->
+
+<!------------Footer Start-------------->
+
+<footer class="footer wow zoomIn animated" data-wow-duration="2s" data-wow-delay="0.9s">
+  <div class="more_size" style="font-family: 'Noto Sans KR', sans-serif;">
+
+  <div class="one_third">
+
+  <h2><span style="font-weight: bold">서비스 바로가기</span></h2>
+
+  <a href="/">초기화면</a><br />
+  <a id = "general" href ='javascript:;' >일반 건강검진</a><br />
+  <a id = "precise" href ='javascript:;' >정밀 건강검진</a><br />
+  <a id = "detail" href ='javascript:;' >상세수치 확인</a><br />
+  <a id = "solution" href ='javascript:;' >생활 처방</a>
+
+  </div>
+
+
+  <div class="one_third">
+  <h2><span style="font-weight: bold">관련 사이트</span></h2>
+  <a href="http://health.mw.go.kr" target="_blank">국가건강정보포털</a><br />
+  <a href="http://nhic.or.kr" target="_blank">국민건강보험공단</a><br />
+  <a href="http://health.cdc.go.kr" target="_blank">질병관리본부</a><br />
+  <a href="http://hi.nhic.or.kr" target="_blank">건강in</a><br />
+  <a href="http://hirawebzine.or.kr/" target="_blank">건강나래</a>
+  
+  </div>
+
+
+  <div class="one_third_last">
+
+  <h2><span style="font-weight: bold">개발자 정보</span></h2>
+   <a>김동열 (dy5361@gmail.com)<br></a>
+   <a>김유민 (show3993@naver.com)<br></a>
+   <a>김재구 (rlaworn1993@gmail.com)<br></a>
+   <a>선용현 (ovomaruta@naver.com)<br></a>
+   <a>양희수 (gmltmwkd@naver.com)</a>
+
+  </div>
+  <div class="clear"></div>
+
+  </div>
+
+  <div class="footer_bottom">
+
+  2017. Team Medical Viewer All rights reserved.
+  <div class="clear"></div>
+  </div>
+
+  <div class="clear"></div>
+  </footer>
+  
+  <!--GOOGLE ANALYTICS-->
+  <script>
+         
+   
+      $(document).ready(function() {
+                var id = sessionStorage.getItem('name');
+               var birth = sessionStorage.getItem('birth');
+               var hospital = sessionStorage.getItem('hospital');
+               var address = sessionStorage.getItem('address');
+               var checkdate = sessionStorage.getItem('checkdate');
+
+               $('#username').text(id+" 님");
+               $('#birth').text("생년 월일 : "+birth);
+               $('#hospital').text("검진 병원명 : "+"경북대병원");
+               $('#address').text("병원 주소 : "+"대구광역시 중구");   
+               $('#checkdate').text("검진 일자 : "+checkdate);
+             
+              if (id == "김동열")
+                  $("#user_pic").attr("src", "/images/user.jpg");
+              else if (id == "김유민")
+                  $("#user_pic").attr("src", "/images/user3.jpg");
+              else if (id == "김재구")
+                 $("#user_pic").attr("src", "/images/user2.jpg");
+              
+      $('#precise_checkup').load("/precise_checkup_canvas.html");
+        // Sidebar theme
+        $('#sidebar-theme').change(function() {
+            var value = $( this ).val();
+            sidebar.removeClass('sidebar-default sidebar-inverse sidebar-colored sidebar-colored-inverse').addClass(value)
+        });
+    });
+
+  </script>
+  <!--END GOOGLE ANALYTICS-->
+
+<!------------Footer End-------------->
+
+</body>
+</html>

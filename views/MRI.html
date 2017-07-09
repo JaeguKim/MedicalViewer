@@ -30,37 +30,37 @@
 	}
 	.title{color:#000000;font-weight:bold;font-size:20px;}
 	</style>
-	
+
 	<script type="text/javascript" src="/js/jquery-3.2.1.min.js"></script>
 	<script type="text/javascript">
-		
+
 	function showBrain() {
 		document.getElementById("brain_pic").src="/img/MRI/brain.jpg";
 	}
-	
+
 	function showSpine() {
 		document.getElementById("spine_pic").src="/img/MRI/spine.png";
 	}
-	
+
 	$(document).ready(function() {
-		if (mri != 0)
+		if (mri != false)
 		{
 			showBrain();
-			showSpine();		
+			showSpine();
 		}
-			
+
 		});
 	</script>
-	
+
 	<div id = "brain" style="float:left;width:52%;height:100%; text-align: center;border:1px solid;">
 	<font face="verdana" size="30" color="black">뇌 MRI촬영사진</font>
 	<img id="brain_pic" border="1" width="100%" height="100%" style = "border:1px solid;">
 	</div>
-	 
+
 	<div id = "spine" style="clear:right;float:right;width:48%;height:100%; text-align: center;border:1px solid;">
 	<font face="verdana" size="30" color="black">척추MRI촬영사진</font>
 	<img id="spine_pic" border="1" width="100%" height="100%"style = "border:1px solid;" >
 	</div>
-	 
+
 	</body>
 	</html>

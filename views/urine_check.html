@@ -30,32 +30,32 @@
 	}
 	.title{color:#000000;font-weight:bold;font-size:20px;}
 	</style>
-	
+
 	<script type="text/javascript" src="/js/jquery-3.2.1.min.js"></script>
 	<script type="text/javascript">
-		
+
 	function showSugar() {
 		if (sugar == 0)
 			document.getElementById("sugar_pic").src="/status/s_neg.png";
 		else
 			document.getElementById("sugar_pic").src="/status/caution.png";
 	}
-	
+
 	function showAlbumin() {
 		if (sugar == 0)
 			document.getElementById("albumin_pic").src="/status/s_neg.png";
 		else
 			document.getElementById("albumin_pic").src="/status/caution.png";
 	}
-	
+
 	function showBlood() {
-		document.getElementById("blood_pic").src="/status/s_neg.png";	
+		document.getElementById("blood_pic").src="/status/s_neg.png";
 	}
-	
+
 	function showPH() {
 		$('#ph').load("/figures/ph_check.html");
 	}
-	
+
 	$(document).ready(function() {
 			showSugar();
 			showAlbumin();
@@ -63,27 +63,27 @@
 			showPH();
 		});
 	</script>
-	
+
 	<div id = "sugar" style="float:left;width:50%;height:50%; text-align: center;border:1px solid;">
 	<font face="verdana" size="30" color="black">요당(Ur.Sugar)</font>
 	<img id="sugar_pic" border="1" width="100%" height="100%" style = "border:1px solid;">
 	</div>
-	 
+
 	<div id = "albumin" style="clear:right;float:right;width:50%;height:50%; text-align: center;border:1px solid;">
 	<font face="verdana" size="30" color="black">요단백(Ur.Albumin)</font>
 	<img id="albumin_pic" border="1" width="100%" height="100%"style = "border:1px solid;" >
 	</div>
-	 
+
 	<div id = "blood" style="float:left;width:50%;height:50%; text-align: center;border:1px solid;">
 	<font face="verdana" size="35" color="black">요잠혈(Occult Blood)</font>
 	<img id="blood_pic" border="1" width="100%" height="100%" style = "border:1px solid;">
 	</div>
-	
+
 	<div id = "ph_wrap" style="clear:right;float:right;width:50%;height:50%; text-align: center;border:1px solid;">
 		<font face="verdana" size="30" color="black">PH</font>
 		<div id = "ph" border="1" width = "100%" height="100%" style = "border:1px solid;">
 		</div>
 	</div>
-	 
+
 	</body>
 	</html>

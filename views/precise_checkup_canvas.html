@@ -14,50 +14,30 @@
 	<script type="text/javascript" src="/js/precise_checkup_js/ECG_Tab.js"></script>
 	<script type="text/javascript">
 		window.addEventListener("load", ECG_draw, false);
-		
+
 		function overlayClick() {
 			$('#overlay').fadeOut('slow');
 			$("#popup").fadeOut("slow");
 		}
-		
+
 		function showCT() {
 			document.getElementById("MRI_CT").style.visibility = "visible";
 			$('canvas').hide();
 			$('#MRI_CT').load("/CT.html");
 		}
-		
+
 		function showMRI() {
 			document.getElementById("MRI_CT").style.visibility = "visible";
 			$('canvas').hide();
 			$('#MRI_CT').load("/MRI.html");
 		}
-		
-		var ct;
-		var mri;
+
+
 		$(document).ready(function() {
-			$.ajax({
-	    		type: "Post",
-	    		url: "http://localhost:8080/user/myMedical",
-	    		dataType: 'json',
-	    		contentType: 'application/json',
-	    		beforeSend: function(xhr) {
-	    			xhr.setRequestHeader("content-type", "application/json");
-	    		},
-	    		data: JSON.stringify({
-	    			"username" : sessionStorage.getItem("username")
-	    		}),
-	    		success: function ( data, textStatus, jQxhr ) {
-	    			ct = data.ct;
-	    			mri = data.mri;
-	    		},
-	    		error: function (request, status, throwerror) {
-	    			location.assign("http://localhost:8080/memberLogin");
-	    		}
-	    	});
 			
 			$("#overlay").click(overlayClick);
 			showCT();
-			
+
 		});
 	</script>
 	</head>
@@ -66,26 +46,26 @@
 	<div id = "popup"><h1><img id="popup_img"></h1></div>
 		<!-- Content -->
 			<div id="content">
-			
+
 				<div id="overlay"></div>
 
-					<div id="popupBox"> 
-						 <div id="popupContent">질병상세수치<br/><br/><br/>		
+					<div id="popupBox">
+						 <div id="popupContent">질병상세수치<br/><br/><br/>
 		    				<br />
 		    				<div id="graph"></div>
-		    				
+
 		    				<button class="deleteMeetingCancel">Cancel</button>
 						</div>
 		        		<div id="deleteMeetingConfirmDeleted">Meeting Deleted</div>
             		</div>
-            		
+
 				<div class="inner">
 					<!-- Post -->
 					<article class="box post post-excerpt">
 						<button type="button" id="CT_button" onclick="showCT()" style="margin-bottom: 20px">CT사진</button>
 						<button type="button" id="MRI_button" onclick="showMRI()" style="margin-bottom: 20px">MRI사진</button>
 						<button type="button" id="ECG_button" onclick="showECGCanvas()" style="margin-bottom: 20px">ECG 그래프</button>
-						
+
 						<canvas id = "ECG_canvas" width = '830px' height='800px' align='center'></canvas>
 						<div id = "wrapper" width = '830px' height='400px' align='center' style = "border: 1px solid black;">
 							<div id = "MRI_CT"></div>

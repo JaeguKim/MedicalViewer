@@ -1,33 +1,72 @@
 module.exports = function(app, user)
 {
-    app.get('/',function(req,res){
-        res.render('index.html')
-     });
-
-    // GET ALL USERS
-    app.get('/api/users', function(req,res){
-        user.find(function(err, users){
-            if(err) return res.status(500).send({error: 'database failure'});
-            res.json(users);
-        })
+    app.get('/login', (req, res) => {
+      res.render('login.html'); // login.ejs 랜더링
     });
 
-    // GET SINGLE USER
-    app.get('/api/users/:user_id', function(req, res){
-        user.findOne({_id: req.params.user_id}, function(err, user){
-            if(err) return res.status(500).json({error: err});
-            if(!user) return res.status(404).json({error: 'user not found'});
-            res.json(user);
-        })
+    app.post('/login', (req, res) => {
+      const body = req.body; // body-parser 사용
+      var result = {};
+      var sess = req.session;
+      user.findOne({_id: req.body._id}, function(err, user){
+          if(err) return res.status(500).json({error: err});
+          if(!user){
+              result["success"] = 0;
+              result["error"] = "ID not found"
+              return res.json(result);
+          }
+
+          if (user["_pw"] == req.body._pw)
+          {
+            result["success"] = 1;
+            sess.first_name = user["first_name"];
+            sess.last_name = user["last_name"];
+            sess.data = user;
+            res.json(result);
+          }
+          else{
+            result["success"] = 0;
+            result["error"] = "incorrect";
+            res.json(result);
+          }
+
+      })
+
     });
-    
-    //CREATE USER
-    app.post('/api/users', function(req, res){
+
+    app.get('/logout', function(req, res){
+        var sess = req.session;
+        if(sess.first_name){
+            req.session.destroy(function(err){
+                if(err){
+                    console.log(err);
+                }else{
+                    res.redirect('/');
+                }
+            })
+        }else{
+            res.redirect('/');
+        }
+    })
+
+    app.post('/join', (req, res) => {
+      const body = req.body;
+      var result = {};
+      user.findOne({_id: req.body._id}, function(err, user){
+          if(err) return res.status(500).json({error: err});
+          if(user){
+            result["success"] = 0;
+            result["error"] = "ID중복"
+            return res.json(result);
+        }
+      })
+
       var new_user = new user();
       new_user._id = req.body._id;
       new_user._pw = req.body._pw;
       new_user.first_name = req.body.first_name;
       new_user.last_name = req.body.last_name;
+      new_user.birth_date = req.body.birth_date;
       new_user.checkup_data = new Date(req.body.checkup_data);
       new_user.pressure = req.body.pressure;
       new_user.creatinine = req.body.creatinine;
@@ -49,6 +88,67 @@ module.exports = function(app, user)
 
           res.json({result: 1});
         });
+    });
+
+    app.get('/',function(req,res){
+        var sess = req.session;
+        res.render('index', {
+            first_name: sess.first_name,
+            last_name: sess.last_name
+        })
+    });
+
+    app.get('/generalCheckup',function(req,res){
+      var sess = req.session;
+      res.render('general_Checkup', {
+          first_name: sess.first_name,
+          last_name: sess.last_name,
+          data: sess.data
+      })
+    });
+
+    app.get('/preciseCheckup',function(req,res){
+      var sess = req.session;
+      res.render('precise_Checkup', {
+          first_name: sess.first_name,
+          last_name: sess.last_name,
+          data: sess.data
+      })
+    });
+
+    app.get('/detailCheckup',function(req,res){
+      var sess = req.session;
+      res.render('detail_figure', {
+          first_name: sess.first_name,
+          last_name: sess.last_name,
+          data: sess.data
+      })
+    });
+
+    app.get('/solution',function(req,res){
+      var sess = req.session;
+      res.render('solution', {
+          first_name: sess.first_name,
+          last_name: sess.last_name,
+          data: sess.data
+      })
+    });
+
+    // GET ALL USERS
+    app.get('/api/users', function(req,res){
+        user.find(function(err, users){
+            if(err) return res.status(500).send({error: 'database failure'});
+            res.json(users);
+        })
+    });
+
+    // GET SINGLE USER
+    app.get('/api/users/:user_id', function(req, res){
+        user.findOne({_id: req.params.user_id}, function(err, user){
+            if(err) return res.status(500).json({error: err});
+            if(!user) return res.status(404).json({error: 'user not found'});
+            res.json(user);
+        })
     });
 
     // UPDATE THE USER

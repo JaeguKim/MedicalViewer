@@ -334,7 +334,7 @@ a.more1:hover{
 	padding:40px 0px;
 	padding-bottom:40px;
 	margin-top:34px;
-	
+
 }
 
 .section-3{
@@ -437,7 +437,7 @@ a.more1:hover{
 	line-height:2;
 	font-size:16px;
 	color:#fff;
-	
+
 }
 
 .footer h2{
@@ -655,7 +655,7 @@ img.align-right{
 .site-header .navbar-inverse .navbar-nav>.active>a:focus, .site-header .navbar-inverse .navbar-nav>.active>a:hover{
 	color:#AF0014;
 	background:none;
-	
+
 }
 
 .site-header .navbar-collapse{
@@ -783,11 +783,11 @@ img.align-right{
 
 
 @media(max-width: 600px){
-	
+
 .section-1 h1{
 	font-size:30px;
 }
-	
+
 .section-1 h1 span {
   font-size: 23px;
   text-transform: capitalize;
@@ -822,12 +822,7 @@ img.align-right{
 	text-align:center;
 	  padding-top: 16px;
 }
-span.call{
-	margin:0 auto;
-	display:block;
-	clear:both;
-	margin-bottom:7px;
-}
+
 
 .header_left {
   text-align: center;

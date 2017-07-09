@@ -2,14 +2,15 @@
 <html>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Medical Viewer</title>
-<head>
+<title>Medical Viewer Homepage</title>
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,300,700,800' rel='stylesheet' type='text/css'>
 
-
+<link href="/css/style.css" rel="stylesheet" type="text/css"  />
+<link rel="stylesheet" href="/css/animate.css">
 
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
@@ -18,98 +19,34 @@
 
 <link href='http://fonts.googleapis.com/css?family=Open+Sans&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-
-<link href="/css/animate.css" rel="stylesheet" >
-<link href="/css/style.css" rel="stylesheet" type="text/css"  />
 <link href="/css/tab2.css" rel="stylesheet" type="text/css"  />
-<link href="/css/tab3.css" rel="stylesheet" type="text/css"  />
-
-<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
 <script type="text/javascript" src="/js/arrow27.js"></script>
 <script type="text/javascript" src="/js/common.js"></script>
-
 </head>
 
 <body>
-  <script>
-	var pressure = 0;
-	var creatinine = 0;
-	var glucose = 0;
-	var hb = 0;
-	var CA = 0;
-	var ph = 0;
-	var plt = 0;
-	var rbc = 0;
-	var tsh = 0;
-	var wbc = 0;
-	var sugar;
-	var albumin;
-	var protein;
-    $(document).ready(function() {
-    	$.ajax({
-    		type: "Post",
-    		url: "http://localhost:8080/user/myMedical",
-    		dataType: 'json',
-    		contentType: 'application/json',
-    		beforeSend: function(xhr) {
-    			xhr.setRequestHeader("content-type", "application/json");
-    		},
-    		data: JSON.stringify({
-    			"username" : sessionStorage.getItem("username")
-    		}),
-    		success: function ( data, textStatus, jQxhr ) {
-    			pressure = data.blood_pressure;
-    			creatinine = data.creatinine;
-    			glucose = data.normal_glucose;
-    			hb = data.hb_check;
-    			CA = data.intestine;
-    			ph = data.ph_check;
-    			plt = data.plt_check;
-    			rbc = data.rbc_check;
-    			tsh = data.thyroid;
-    			wbc = data.wbc_check;
-    			sugar = data.sugar;
-    		    albumin = data.albumin;
-    		    protein = data.protein_in_urine;
-    		},
-    		error: function (request, status, throwerror) {
-    			location.assign("http://localhost:8080/memberLogin");
-    		}
-    	});
 
-       var id = sessionStorage.getItem('name');
-        var birth = sessionStorage.getItem('birth');
-        var hospital = sessionStorage.getItem('hospital');
-        var address = sessionStorage.getItem('address');
-        var checkdate = sessionStorage.getItem('checkdate');
+<style>
 
-        $('#username').text(id+" 님");
-        $('#birth').text("생년 월일 : "+birth);
-        $('#hospital').text("검진 병원명 : "+"경북대병원");
-        $('#address').text("병원 주소 : "+"대구광역시 중구");
-        $('#checkdate').text("검진 일자 : "+checkdate);
+#main-wrap > div { min-height: 450px; }
 
-       //id = "김동열";
-       if (id == "김동열")
-         $("#user_pic").attr("src", "/images/user.jpg");
-       else if (id == "김유민")
-         $("#user_pic").attr("src", "/images/user3.jpg");
-       else if (id == "김재구")
-        $("#user_pic").attr("src", "/images/user2.jpg");
+/* layout */
+#main-wrap {
+    /* overflow to handle inner floating block */
+    overflow: hidden;
+}
 
-      $('#general_checkup').load("/general_checkup_canvas.html");
+#sidebar {
+    float: left;
+    width: 25%;
+    background-color : #f5c489;
+}
 
-        // Sidebar theme
-        $('#sidebar-theme').change(function() {
-            var value = $( this ).val();
-            sidebar.removeClass('sidebar-default sidebar-inverse sidebar-colored sidebar-colored-inverse').addClass(value)
-        });
-    });
-
-
-  </script>
-
-
+#solution_canvas {
+    float: right;
+    width: 73%;
+}
+</style>
 
 <!-----------------Header Start--------------------->
 <header class="site-header">
@@ -118,12 +55,19 @@
 
 
 <div class="header_right">
-<!-- <a href="index.html"><img alt="초기화면"  src="images/home.png" style="height: 70px; weight: 70px;" align="left"/></a> -->
+  <span style = "margin-right:4%">
+    <% if( !first_name && !last_name ) { %>
+      사용자 로그인이 필요합니다.
+    <% } else { %>
+      안녕하세요. <%= first_name %> <%= last_name %>님
+    <% } %>
+  </span>
 
-<span class="call"></span>
-
-
-<a class="more" href="/logout">로그아웃</a>
+  <% if( !first_name && !last_name ) { %>
+  <a class="more" href ='javascript:;' onclick = login()>로그인</a>
+  <% } else { %>
+  <a class="more" href ='javascript:;' onclick = logout()>로그아웃</a>
+  <% } %>
 </div>
 </div>
 <div class="clear"></div>
@@ -150,12 +94,12 @@
 
        </div>
        <div class="collapse navbar-collapse" id="myNavbar">
-                  <ul class="nav navbar-nav" >
+         <ul class="nav navbar-nav" >
            <li><a  href="/" style="margin-right: 50px; line-height:2;">초기화면</a></li>
-            <li><a class="active" href ='javascript:;' onclick = general() style="margin-right: 50px; line-height:2;">일반 건강검진</a></li>
+            <li><a href ='javascript:;' onclick = general() style="margin-right: 50px; line-height:2;">일반 건강검진</a></li>
             <li><a href ='javascript:;' onclick = precise() style="margin-right: 50px; line-height:2;">정밀 건강검진</a></li>
             <li><a href ='javascript:;' onclick = detail() style="margin-right: 50px; line-height:2;">상세수치 확인</a></li>
-            <li><a href ='javascript:;' onclick = solution()>생활 처방</a></li>
+            <li><a class="active" href ='javascript:;' onclick = solution()>생활 처방</a></li>
                </ul>
        </div>
    </nav>
@@ -165,13 +109,12 @@
 <div id = "main_wrap">
 <!-- Overlay for fixed sidebar -->
 <div class="sidebar-overlay"></div>
-<div id = "general_checkup"></div>
-
+<div id = "solution_canvas"></div>
 <div id="sidebar" class="sidebar sidebar-default open" role="navigation" style="min-height: 860px; max-height: 860px">
     <!-- Sidebar header -->
     <div class="sidebar-header header-cover" style="background-image: url('/images/user_bg.jpg'); width:100%; height:100%">
         <!-- Sidebar brand image -->
-      <div class="sidebar-image" align="center">
+        <div class="sidebar-image" align="center">
             <img id = "user_pic" style="width: 150px; height: 150px; margin-top: 16px; border-radius: 50%;">
         </div>
       <div class="top-bar" style="text-align: center">
@@ -273,11 +216,50 @@
   <div class="clear"></div>
   </footer>
 
-  <!--GOOGLE ANALYTICS-->
+  <script>
 
-  <!--END GOOGLE ANALYTICS-->
+    $(document).ready(function() {
+      var first_name = "<%= data.first_name %>";
+      var last_name = "<%= data.last_name %>";
+      var full_name = first_name.concat(last_name);
+      console.log(first_name);
+      var birth = "<%= data.birth_date %>";
+      var hospital = "<%= data.hospital %>";
+      var address = "<%= data.address %>";
+      var checkdate = "<%= data.checkup_date %>";
 
-<!------------Footer End-------------->
+      $('#username').text(first_name+last_name+"님");
+      $('#birth').text("생년 월일 : "+birth);
+      $('#hospital').text("검진 병원명 : "+hospital);
+      $('#address').text("병원 주소 : "+address);
+      $('#checkdate').text("검진 일자 : "+checkdate);
+
+     if (full_name == "김동열")
+       $("#user_pic").attr("src", "/images/user.jpg");
+     else if (full_name == "김유민")
+       $("#user_pic").attr("src", "/images/user3.jpg");
+     else if (full_name == "김재구")
+      $("#user_pic").attr("src", "/images/user2.jpg");
+
+    	if (full_name == "김동열") {
+    		$('#solution_canvas').load("/solution_canvas.html");
+    	}
+    	else if (full_name == "김유민"){
+    		$('#solution_canvas').load("/solution_canvas2.html");
+    	}
+    	else if (full_name == "김재구") {
+    		$('#solution_canvas').load("/solution_canvas3.html");
+    	}
+
+        // Sidebar theme
+        $('#sidebar-theme').change(function() {
+            var value = $( this ).val();
+            sidebar.removeClass('sidebar-default sidebar-inverse sidebar-colored sidebar-colored-inverse').addClass(value)
+        });
+    });
+
+
+  </script>
 
 </body>
 </html>

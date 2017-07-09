@@ -40,12 +40,19 @@
 
 
 <div class="header_right">
-<!-- <a href="index.html"><img alt="초기화면"  src="images/home.png" style="height: 70px; weight: 70px;" align="left"/></a> -->
+<span style = "margin-right:4%">
+  <% if( !first_name && !last_name ) { %>
+    사용자 로그인이 필요합니다.
+  <% } else { %>
+    안녕하세요. <%= first_name %> <%= last_name %>님
+  <% } %>
+</span>
 
-<span class="call"></span>
-
-
-<a class="more" href="/logout">로그아웃</a>
+<% if( !first_name && !last_name ) { %>
+<a class="more" href ='javascript:;' onclick = login()>로그인</a>
+<% } else { %>
+<a class="more" href ='javascript:;' onclick = logout()>로그아웃</a>
+<% } %>
 </div>
 </div>
 <div class="clear"></div>
@@ -69,7 +76,7 @@
            <span class="icon-bar"></span>
            <span class="icon-bar"></span>
          </button>
-   
+
        </div>
        <div class="collapse navbar-collapse" id="myNavbar">
              <ul class="nav navbar-nav" >
@@ -80,8 +87,8 @@
             <li><a href ='javascript:;' onclick = solution()>생활 처방</a></li>
                </ul>
        </div>
-   </nav> 
-   
+   </nav>
+
 </div>
 
 <div id = "main_wrap">
@@ -131,7 +138,7 @@
             </a>
         </li>
     </ul>
-    
+
 </div>
 
 </div>
@@ -171,7 +178,7 @@
   <a href="http://health.cdc.go.kr" target="_blank">질병관리본부</a><br />
   <a href="http://hi.nhic.or.kr" target="_blank">건강in</a><br />
   <a href="http://hirawebzine.or.kr/" target="_blank">건강나래</a>
-  
+
   </div>
 
 
@@ -197,31 +204,36 @@
 
   <div class="clear"></div>
   </footer>
-  
+
   <!--GOOGLE ANALYTICS-->
   <script>
-         
-   
-      $(document).ready(function() {
-                var id = sessionStorage.getItem('name');
-               var birth = sessionStorage.getItem('birth');
-               var hospital = sessionStorage.getItem('hospital');
-               var address = sessionStorage.getItem('address');
-               var checkdate = sessionStorage.getItem('checkdate');
+  var ct;
+  var mri;
+    $(document).ready(function() {
+      ct = true;
+      mri = true;
+      var first_name = "<%= data.first_name %>";
+      var last_name = "<%= data.last_name %>";
+      var full_name = first_name.concat(last_name);
+      console.log(first_name);
+      var birth = "<%= data.birth_date %>";
+      var hospital = "<%= data.hospital %>";
+      var address = "<%= data.address %>";
+      var checkdate = "<%= data.checkup_date %>";
 
-               $('#username').text(id+" 님");
-               $('#birth').text("생년 월일 : "+birth);
-               $('#hospital').text("검진 병원명 : "+"경북대병원");
-               $('#address').text("병원 주소 : "+"대구광역시 중구");   
-               $('#checkdate').text("검진 일자 : "+checkdate);
-             
-              if (id == "김동열")
-                  $("#user_pic").attr("src", "/images/user.jpg");
-              else if (id == "김유민")
-                  $("#user_pic").attr("src", "/images/user3.jpg");
-              else if (id == "김재구")
-                 $("#user_pic").attr("src", "/images/user2.jpg");
-              
+      $('#username').text(first_name+last_name+"님");
+      $('#birth').text("생년 월일 : "+birth);
+      $('#hospital').text("검진 병원명 : "+hospital);
+      $('#address').text("병원 주소 : "+address);
+      $('#checkdate').text("검진 일자 : "+checkdate);
+
+     if (full_name == "김동열")
+       $("#user_pic").attr("src", "/images/user.jpg");
+     else if (full_name == "김유민")
+       $("#user_pic").attr("src", "/images/user3.jpg");
+     else if (full_name == "김재구")
+      $("#user_pic").attr("src", "/images/user2.jpg");
+
       $('#precise_checkup').load("/precise_checkup_canvas.html");
         // Sidebar theme
         $('#sidebar-theme').change(function() {

@@ -1,155 +1,126 @@
-<!--
-   Author: W3layouts
-   Author URL: http://w3layouts.com
-   License: Creative Commons Attribution 3.0 Unported
-   License URL: http://creativecommons.org/licenses/by/3.0/
--->
-
 <!DOCTYPE html>
-<html>
+<html >
 <head>
-   <title>Medical Viewer</title>
-   <link rel="stylesheet" href="css/style.css">
-   <link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
-   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-   <!-- For-Mobile-Apps-and-Meta-Tags -->
-      <meta name="viewport" content="width=device-width, initial-scale=1" />
-      <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-      <meta name="keywords" content="Simple Login Form Widget Responsive, Login Form Web Template, Flat Pricing Tables, Flat Drop-Downs, Sign-Up Web Templates, Flat Web Templates, Login Sign-up Responsive Web Template, Smartphone Compatible Web Template, Free Web Designs for Nokia, Samsung, LG, Sony Ericsson, Motorola Web Design" />
-      <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
-   <!-- //For-Mobile-Apps-and-Meta-Tags -->
-
+  <meta charset="UTF-8">
+  <title>Flat HTML5/CSS3 Login Form</title>
+      <link rel="stylesheet" href="/css/login.css">
 </head>
 
 <body>
-<script src = "/js/jquery-3.2.1.min.js"></script>
-<script src = "/js/login.js"> </script>
-<script> sessionStorage.clear() </script>
-   <style>
-   @import url(https://fonts.googleapis.com/css?family=Roboto:300);
-.login-page {
-  width: 520px;
-  padding: 12% 0 0;
-  margin: auto;
-}
-.form {
-  position: relative;
-  z-index: 1;
-  background: #FFFFFF;
-  max-width: 520px;
-  margin: 0 auto 100px;
-  padding: 45px;
-  text-align: center;
-  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
-}
-.form input {
-  font-family: "Roboto", sans-serif;
-  outline: 0;
-  background: #f2f2f2;
-  width: 100%;
-  border: 0;
-  margin: 0 0 15px;
-  padding: 15px;
-  box-sizing: border-box;
-  font-size: 14px;
-}
-.form button {
-  font-family: "Roboto", sans-serif;
-  text-transform: uppercase;
-  outline: 0;
-  background: #4CAF50;
-  width: 100%;
-  border: 0;
-  padding: 15px;
-  color: #FFFFFF;
-  font-size: 14px;
-  -webkit-transition: all 0.3 ease;
-  transition: all 0.3 ease;
-  cursor: pointer;
-}
-.form button:hover,.form button:active,.form button:focus {
-  background: #43A047;
-}
-.form .message {
-  margin: 15px 0 0;
-  color: #b3b3b3;
-  font-size: 12px;
-}
-.form .message a {
-  color: #4CAF50;
-  text-decoration: none;
-}
-.form .register-form {
-  display: none;
-}
-.container {
-  position: relative;
-  z-index: 1;
-  max-width: 300px;
-  margin: 0 auto;
-}
-.container:before, .container:after {
-  content: "";
-  display: block;
-  clear: both;
-}
-.container .info {
-  margin: 50px auto;
-  text-align: center;
-}
-.container .info h1 {
-  margin: 0 0 15px;
-  padding: 0;
-  font-size: 36px;
-  font-weight: 300;
-  color: #1a1a1a;
-}
-.container .info span {
-  color: #4d4d4d;
-  font-size: 12px;
-}
-.container .info span a {
-  color: #000000;
-  text-decoration: none;
-}
-.container .info span .fa {
-  color: #EF3B3A;
-}
-body {
-  /*background: #FFFFFF; /* fallback for old browsers */
-  /*background: -webkit-linear-gradient(right, #FFFFFF, #B6E7FF);
-  background: -moz-linear-gradient(right, #FFFFFF, #B6E7FF);
-  background: -o-linear-gradient(right, #FFFFFF, #B6E7FF);
-  background: linear-gradient(to left, #FFFFFF, #B6E7FF); */
-  background-image:url('images/background.jpg');
-  background-size:cover;
-  /*margin:10px;
-  padding:10px;
-  /*opacity: 0.3!important; filter:alpha(opacity=30);*/
-  font-family: "Roboto", sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;      
-}
-   </style>
+<script src="//code.jquery.com/jquery.js"></script>
+<script>
+function join(){
+  var data = {};
 
+  data._id = document.getElementById("join_id").value;
+  data._pw = document.getElementById("join_pw").value;
+  data.first_name = document.getElementById("first_name").value;
+  data.last_name = document.getElementById("last_name").value;
+  data.birth_date = document.getElementById("birth_date").value;
+  data.checkup_date = document.getElementById("checkup_date").value;
+  data.hospital = document.getElementById("hospital").value;
+  data.pressure = document.getElementById("pressure").value;
+  data.last_name = document.getElementById("last_name").value;
+  data.address= document.getElementById("address").value;
+  data.pressure = document.getElementById("pressure").value;
+  data.creatinine = document.getElementById("creatinine").value;
+  data.glucose = document.getElementById("glucose").value;
+  data.hb = document.getElementById("hb").value;
+  data.CA = document.getElementById("CA").value;
+  data.ph = document.getElementById("ph").value;
+  data.plt = document.getElementById("plt").value;
+  data.rbc = document.getElementById("rbc").value;
+  data.tsh = document.getElementById("tsh").value;
+  data.wbc = document.getElementById("wbc").value;
+
+  console.log(data);
+  var request = $.ajax({
+    url: "http://localhost:8080/join",
+    type: "POST",
+    dataType:"json",
+    data: data,
+});
+
+request.done(function(data){
+   if (data != null){
+    if (data.result == 1) {
+      window.location="http://localhost:8080/login";
+    } else{
+     console.log('fail!');
+    }
+   }
+  });
+  request.fail(function(jqXHR, textStatus){
+   alert("등록 오류 발생!");
+  });
+}
+
+function login(){
+  var data = {};
+
+  data._id = document.getElementById("login_id").value;
+  data._pw = document.getElementById("login_pw").value;
+
+  console.log(data);
+  var request = $.ajax({
+    url: "http://localhost:8080/login",
+    type: "POST",
+    dataType:"json",
+    data: data,
+});
+
+request.done(function(data){
+   if (data != null){
+    if (data.success == 1 ) {
+      console.log(data.success);
+      window.location="http://localhost:8080/";
+    }
+   }
+  });
+  request.fail(function(jqXHR, textStatus){
+   alert("로그인 오류 발생!");
+  });
+}
+
+</script>
   <div class="login-page">
-  <div class="form" style="background-image:url('/images/back.jpg'); background-size:cover;" >
-    <h1>Medical Viewer</h1>
+  <div class="form">
     <form class="register-form">
-      <input type="text" placeholder="name"/>
-      <input type="password" placeholder="password"/>
-      <input type="text" placeholder="email address"/>
-      <button>create</button>
-      <p class="message">Already registered? <a href="#">Sign In</a></p>
+      <input type="text" id ="join_id" placeholder="아이디"/>
+      <input type="password" id = "join_pw" placeholder="비밀번호"/>
+      <input type="text" id = "first_name" placeholder="성"/>
+      <input type="text" id = "last_name" placeholder="이름"/>
+      <input type="text" id = "birth_date" placeholder="생년월일"/>
+      <input type="text" id = "checkup_date" placeholder="검진일"/>
+      <input type="text" id = "hospital" placeholder="검진병원"/>
+      <input type="text" id = "address" placeholder="주소"/>
+      <input type="text" id = "pressure" placeholder="수축기혈압"/>
+      <input type="text" id = "creatinine" placeholder="크레아티닌"/>
+      <input type="text" id = "glucose" placeholder="공복혈당"/>
+      <input type="text" id = "hb" placeholder="헤모글로빈 수치"/>
+      <input type="text" id = "CA" placeholder="소화기암 표지수치"/>
+      <input type="text" id = "ph" placeholder="PH"/>
+      <input type="text" id = "plt" placeholder="PLT"/>
+      <input type="text" id = "rbc" placeholder="적혈구수치"/>
+      <input type="text" id = "tsh" placeholder="갑상선수치"/>
+      <input type="text" id = "wbc" placeholder="백혈구수치"/>
+      <button onclick="join()">확인</button>
+      <p class="message">이미 가입하셨나요? <a href="/login">로그인</a></p>
     </form>
     <form class="login-form">
-      <input id = "name" type="text" placeholder="username"/>
-      <input id = "password" type="password" placeholder="password"/>
-      <button type = "button" id = "login">login</button>
-      <p class="message">회원가입을 안하셨나요? <a href="#"> 회원가입 하러가기</a></p>
+      <input type="text" id ="login_id" placeholder="아이디"/>
+      <input type="password" id = "login_pw" placeholder="비밀번호"/>
+      <button onclick="login()">로그인</button>
+      <p class="message">회원가입을 안하셨나요? <a href ='#'>회원가입</a></p>
     </form>
   </div>
 </div>
+  <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+  <script>
+   $('.message a').click(function(){
+   $('form').animate({height: "toggle", opacity: "toggle"}, "slow");
+  });
+  </script>
+
 </body>
 </html>
-

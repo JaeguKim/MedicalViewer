@@ -20,8 +20,19 @@
 <div class="header_top wow fadeInDown animated" data-wow-duration="0.6s" data-wow-delay="0.6">
 <div class="more_size">
 <div class="header_right">
-<span class="call">사용자 로그인이 필요합니다. </span>
-<a class="more" href="/memberLogin">로그인</a>
+  <span style = "margin-right:4%">
+    <% if( !first_name && !last_name ) { %>
+      사용자 로그인이 필요합니다.
+    <% } else { %>
+      안녕하세요. <%= first_name %> <%= last_name %>님
+    <% } %>
+  </span>
+
+<% if( !first_name && !last_name ) { %>
+  <a class="more" href ='javascript:;' onclick = login()>로그인</a>
+<% } else { %>
+  <a class="more" href ='javascript:;' onclick = logout()>로그아웃</a>
+<% } %>
 </div>
 </div>
 <div class="clear"></div>

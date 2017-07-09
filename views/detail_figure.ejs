@@ -38,11 +38,19 @@
 
 
 <div class="header_right">
+  <span style = "margin-right:4%">
+    <% if( !first_name && !last_name ) { %>
+      사용자 로그인이 필요합니다.
+    <% } else { %>
+      안녕하세요. <%= first_name %> <%= last_name %>님
+    <% } %>
+  </span>
 
-<span class="call"></span>
-
-
-<a class="more" href="/logout">로그아웃</a>
+  <% if( !first_name && !last_name ) { %>
+  <a class="more" href ='javascript:;' onclick = login()>로그인</a>
+  <% } else { %>
+  <a class="more" href ='javascript:;' onclick = logout()>로그아웃</a>
+  <% } %>
 </div>
 </div>
 <div class="clear"></div>
@@ -66,7 +74,7 @@
            <span class="icon-bar"></span>
            <span class="icon-bar"></span>
          </button>
-   
+
        </div>
        <div class="collapse navbar-collapse" id="myNavbar">
                          <ul class="nav navbar-nav" >
@@ -77,8 +85,8 @@
             <li><a href ='javascript:;' onclick = solution()>생활 처방</a></li>
                </ul>
        </div>
-   </nav> 
-   
+   </nav>
+
 </div>
 
 
@@ -128,7 +136,7 @@
             </a>
         </li>
     </ul>
-    
+
 </div>
 <div id = "detail_figure"></div>
 </div>
@@ -167,7 +175,7 @@
   <a href="http://health.cdc.go.kr" target="_blank">질병관리본부</a><br />
   <a href="http://hi.nhic.or.kr" target="_blank">건강in</a><br />
   <a href="http://hirawebzine.or.kr/" target="_blank">건강나래</a>
-  
+
   </div>
 
 
@@ -193,68 +201,67 @@
 
   <div class="clear"></div>
   </footer>
-  
-  <!--GOOGLE ANALYTICS-->
-  <script>
-  var pressure = 0;
-	var creatinine = 0;
-	var glucose = 0;
-	var hb = 0;
-	var CA = 0;
-	var ph = 0;
-	var plt = 0;
-	var rbc = 0;
-	var tsh = 0;
-	var wbc = 0;
-    $(document).ready(function() {
-    	$.ajax({
-    		type: "Post",
-    		url: "http://localhost:8080/user/myMedical",
-    		dataType: 'json',
-    		contentType: 'application/json',
-    		beforeSend: function(xhr) {
-    			xhr.setRequestHeader("content-type", "application/json");
-    		},
-    		data: JSON.stringify({
-    			"username" : sessionStorage.getItem("username")
-    		}),
-    		success: function ( data, textStatus, jQxhr ) {
-    			pressure = data.blood_pressure;
-    			creatinine = data.creatinine;
-    			glucose = data.normal_glucose;
-    			hb = data.hb_check;
-    			CA = data.intestine;
-    			ph = data.ph_check;
-    			plt = data.plt_check;
-    			rbc = data.rbc_check;
-    			tsh = data.thyroid;
-    			wbc = data.wbc_check;
-    		},
-    		error: function (request, status, throwerror) {
-    			location.assign("http://localhost:8080/memberLogin");
-    		}
-    	});
-       var id = sessionStorage.getItem('name');
-      var birth = sessionStorage.getItem('birth');
-      var hospital = sessionStorage.getItem('hospital');
-      var address = sessionStorage.getItem('address');
-      var checkdate = sessionStorage.getItem('checkdate');
 
-      $('#username').text(id+" 님");
+  <script>
+  var pressure;
+	var creatinine;
+	var glucose;
+	var hb;
+	var CA;
+	var ph;
+	var plt;
+	var rbc;
+	var tsh;
+	var wbc;
+	var sugar;
+	var albumin;
+	var protein;
+  var blood;
+
+    $(document).ready(function() {
+      pressure = <%= parseFloat(data.pressure) %>;
+      creatinine = <%= parseFloat(data.creatinine) %>;
+      glucose = <%= parseFloat(data.glucose) %>;
+      hb = <%= parseFloat(data.hb) %>;
+      CA = <%= parseFloat(data.CA) %>;
+      ph = <%= parseFloat(data.ph) %>;
+      plt = <%= parseFloat(data.plt) %>;
+      rbc = <%= parseFloat(data.rbc) %>;
+      tsh = <%= parseFloat(data.tsh) %>;
+      wbc = <%= parseFloat(data.wbc) %>;
+      //sugar = <%= data.sugar %>;
+      sugar = true;
+      //albumin = <%= data.albumin %>;
+      albumin = true;
+      //protein = <%= data.protein_in_urine %>;
+      protein = true;
+      //blood = <%= data.blood %>;
+      blood = true;
+
+      var first_name = "<%= data.first_name %>";
+      var last_name = "<%= data.last_name %>";
+      var full_name = first_name.concat(last_name);
+      console.log(first_name);
+      var birth = "<%= data.birth_date %>";
+      var hospital = "<%= data.hospital %>";
+      var address = "<%= data.address %>";
+      var checkdate = "<%= data.checkup_date %>";
+
+      $('#username').text(first_name+last_name+"님");
       $('#birth').text("생년 월일 : "+birth);
-      $('#hospital').text("검진 병원명 : "+"경북대병원");
-      $('#address').text("병원 주소 : "+"대구광역시 중구");   
+      $('#hospital').text("검진 병원명 : "+hospital);
+      $('#address').text("병원 주소 : "+address);
       $('#checkdate').text("검진 일자 : "+checkdate);
-    
-       if (id == "김동열")
-          $("#user_pic").attr("src", "/images/user.jpg");
-      else if (id == "김유민")
-          $("#user_pic").attr("src", "/images/user3.jpg");
-      else if (id == "김재구")
-         $("#user_pic").attr("src", "/images/user2.jpg");
-       
+
+     if (full_name == "김동열")
+       $("#user_pic").attr("src", "/images/user.jpg");
+     else if (full_name == "김유민")
+       $("#user_pic").attr("src", "/images/user3.jpg");
+     else if (full_name == "김재구")
+      $("#user_pic").attr("src", "/images/user2.jpg");
+
       $('#detail_figure').load("/detail_figure_canvas.html");
-      
+
         // Sidebar theme
         $('#sidebar-theme').change(function() {
             var value = $( this ).val();
@@ -264,9 +271,6 @@
 
 
   </script>
-  <!--END GOOGLE ANALYTICS-->
-
-<!------------Footer End-------------->
 
 </body>
 </html>

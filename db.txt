@@ -1,0 +1,78 @@
+blood_pressure.html : 수축기 혈압(정상 : 135이하 아무값, 비정상 : 135초과값) 130,140
+normal_glucose.html : 공복혈당(정상 : 109이하, 비정상 : 109초과) 103, 120
+hb_check.html : 혈색소수치(정상 : 18이하, 비정상 : 18초과) 15, 22
+intestine.html : 소화기암 표지수치(정상 : 37이하, 비정상 : 37초과) 35, 40
+kidney.html : 크레아티닌 수치(정상 : 1.3이하 아무값, 비정상 : 1.3초과값) 1.1, 1.7
+ph_check.html : PH수치(정상 : 7.5근처, 비정상 : 7.5보다 차이많이나는값) 7.2, 5.1
+plt_check.html : 혈소판수치(정상 : 200이상, 비정상 : 200미만) 220, 170
+rbc_check.html : 적혈구수치(정상 :6.1이상, 비정상 : 6.1미만) 6.3, 5.1
+thyroid.html : 갑상선 호르몬수치(정상 : 1.81근처, 비정상 : 1.81과 차이많이나는값) 1.80, 2.5
+wbc_check.html : 백혈구수치(정상 : 12근처, 비정상 : 12와 차이많이나는값) 11, 13
+CT.html : CT를 찍었는지 않찍었는지 boolean 값, 
+MRI.html : MRI를 찍었는지 않찍었는지 boolean 값
+general_checkup.html : 환자이름, 검진병원, 검진일자
+detil_figure.html : 환자이름, 검진병원, 검진일자
+precise_checkup.html : 환자이름, 검진병원, 검진일자
+solution.html : 환자이름, 검진병원, 검진일자
+urine_check.html : 요당검출여부(boolean), 알부민검출여부(boolean)
+잠혈검출여부(boolean)
+
+
+_id : String,
+    _pw : String,
+    first_name: String,
+    last_name: String,
+    checkup_data : { type: Date, default: Date.now  },
+    pressure : String,
+    creatinine : String,
+    glucose : String,
+    hb : String,
+    CA : String,
+    ph : String,
+    plt : String,
+    rbc : String,
+    tsh : String,
+    wbc : String
+
+{
+“_id” : “jaegu1993”,
+“_pw” : “worn1993”,
+“checkup_data” : “2017-05-14”,
+“pressure” : “130”,
+“creatinine” : “1.1”,
+“glucose” : “103”,
+“hb” : “13”,
+“CA” : “35”,
+“ph” : “7.2”,
+“plt” : “220”,
+“rbc” : “6.3”,
+“tsh” : “1.8”,
+“wbc” : “11”  
+}
+
+{
+“_id” : “jaegu7646”,
+“_pw” : “worn7646”,
+“checkup_data” : “2017-03-14”,
+“pressure” : “140”,
+“creatinine” : “1.7”,
+“glucose” : “120”,
+“hb” : “22”,
+“CA” : “40”,
+“ph” : “5.1”,
+“plt” : “170”,
+“rbc” : “5.1”,
+“tsh” : “2.5”,
+“wbc” : “13”  
+}
+
+, 비정상 : 135초과값) 130,140
+normal_glucose.html : 공복혈당(정상 : 109이하, 비정상 : 109초과) 103, 120
+hb_check.html : 혈색소수치(정상 : 18이하, 비정상 : 18초과) 15, 22
+intestine.html : 소화기암 표지수치(정상 : 37이하, 비정상 : 37초과) 35, 40
+kidney.html : 크레아티닌 수치(정상 : 1.3이하 아무값, 비정상 : 1.3초과값) 1.1, 1.7
+ph_check.html : PH수치(정상 : 7.5근처, 비정상 : 7.5보다 차이많이나는값) 7.2, 5.1
+plt_check.html : 혈소판수치(정상 : 200이상, 비정상 : 200미만) 220, 170
+rbc_check.html : 적혈구수치(정상 :6.1이상, 비정상 : 6.1미만) 6.3, 5.1
+thyroid.html : 갑상선 호르몬수치(정상 : 1.81근처, 비정상 : 1.81과 차이많이나는값) 1.80, 2.5
+wbc_check.html : 백혈구수치(정상 : 12근처, 비정상 : 12와 차이많이나는값) 11, 13
